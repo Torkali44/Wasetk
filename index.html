@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وسيطك العقاري | دليلك لأفضل العقارات</title>
+
+    <!-- Google Fonts: Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        tajawal: ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            primary: '#1e3a8a',
+                            gold: '#d97706',
+                            light: '#f8fafc'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-overlay {
+            background-color: rgba(15, 23, 42, 0.65);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(50%);
+            }
+        }
+
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, rgba(30, 58, 138, 0.05), transparent);
+            padding: 2.5rem 0;
+            margin-bottom: 4rem;
+        }
+
+        .marquee-content {
+            display: flex;
+            gap: 6rem;
+            width: max-content;
+            animation: scroll 30s linear infinite;
+        }
+
+        .marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        .float-whatsapp {
+            position: fixed;
+            width: 65px;
+            height: 65px;
+            bottom: 40px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50%;
+            font-size: 35px;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            left: 40px;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.1);
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1e40af;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 antialiased overflow-x-hidden">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent text-white py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <!-- Logos & Title -->
+            <a href="#"
+                class="flex flex-wrap items-center gap-2 md:gap-4 transition-all duration-500 hover:scale-105 hover:-translate-y-1">
+                <!-- <img src="images العامه للعقار .jpeg" alt="الهيئة العامة للعقار" class="h-10 md:h-14 w-auto object-contain rounded bg-white/90 p-1 shadow-sm"> -->
+                <img src="images/Fal.png" alt="فال العقارية"
+                    class="h-10 md:h-14 w-auto object-contain rounded bg-white/90 p-1 shadow-md">
+                <div class="text-xl md:text-2xl font-bold tracking-wider flex items-center gap-1 drop-shadow-md">
+                    وسيطك<span class="text-brand-gold">العقاري</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 space-x-reverse items-center">
+                <a href="#home" class="hover:text-brand-gold transition-colors font-medium">الرئيسية</a>
+                <a href="#services" class="hover:text-brand-gold transition-colors font-medium">خدماتنا</a>
+                <a href="#specialties" class="hover:text-brand-gold transition-colors font-medium">تخصصاتنا</a>
+                <a href="#team" class="hover:text-brand-gold transition-colors font-medium">فريق العمل</a>
+                <a href="#contact"
+                    class="bg-brand-gold text-white px-6 py-2 rounded-full font-bold hover:bg-yellow-600 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">تواصل
+                    معنا</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Sidebar Overlay -->
+        <div id="mobile-overlay"
+            class="fixed inset-0 bg-brand-dark/60 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300 md:hidden">
+        </div>
+
+        <!-- Mobile Sidebar Menu -->
+        <div id="mobile-menu"
+            class="fixed top-0 right-0 w-72 h-full bg-white text-brand-dark shadow-2xl flex flex-col pt-10 px-6 space-y-6 z-50 transform translate-x-full transition-transform duration-300 md:hidden overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-gray-100 pb-4 mb-4">
+                <span class="text-xl font-bold text-brand-gold"><i class="fa-solid fa-building me-2"></i>وسيطك
+                    العقاري</span>
+                <button id="close-menu-btn"
+                    class="text-2xl text-gray-400 hover:text-red-500 transition-colors focus:outline-none">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <a href="#home"
+                class="w-full text-right py-2 hover:text-brand-gold text-lg font-bold mobile-link transition-colors"><i
+                    class="fa-solid fa-house me-3 text-gray-400"></i>الرئيسية</a>
+            <a href="#services"
+                class="w-full text-right py-2 hover:text-brand-gold text-lg font-bold mobile-link transition-colors"><i
+                    class="fa-solid fa-star me-3 text-gray-400"></i>خدماتنا</a>
+            <a href="#specialties"
+                class="w-full text-right py-2 hover:text-brand-gold text-lg font-bold mobile-link transition-colors"><i
+                    class="fa-solid fa-map-location-dot me-3 text-gray-400"></i>تخصصاتنا</a>
+            <a href="#team"
+                class="w-full text-right py-2 hover:text-brand-gold text-lg font-bold mobile-link transition-colors"><i
+                    class="fa-solid fa-users me-3 text-gray-400"></i>فريق العمل</a>
+            <div class="mt-auto pt-8 border-t border-gray-100 pb-10">
+                <a href="#contact"
+                    class="w-full block text-center bg-brand-gold text-white px-8 py-3 rounded-xl font-bold mobile-link shadow-lg shadow-yellow-500/30">تواصل
+                    معنا</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <!-- Background Video -->
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
+            <source src="images/background.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="container mx-auto px-6 text-center text-white relative z-10">
+            <div class="max-w-3xl mx-auto fade-in-up mt-10 md:mt-0">
+                <span
+                    class="hidden md:inline-block py-2 px-6 rounded-full bg-white/10 text-brand-gold border border-brand-gold/50 text-sm md:text-base font-bold mb-6 backdrop-blur-md shadow-lg animate-float">
+                    <i class="fa-solid fa-shield-check me-2"></i> وسيط معتمد من الهيئة العامة للعقار
+                </span>
+                <span
+                    class="inline-block md:hidden py-1.5 px-4 rounded-full bg-white/10 text-brand-gold border border-brand-gold/50 text-xs font-bold mb-4 backdrop-blur-md shadow-lg animate-float">
+                    <i class="fa-solid fa-shield-check me-1"></i> وسيط عقاري معتمد
+                </span>
+
+                <h1 class="text-3xl md:text-6xl lg:text-7xl font-bold mb-4 md:mb-6 leading-tight drop-shadow-xl animate-float"
+                    style="animation-delay: 1s;">
+                    نختصر لك الطريق في البحث عن <br class="md:hidden" /><span
+                        class="text-brand-gold text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-300 drop-shadow-md">عقار
+                        أحلامك</span>
+                </h1>
+
+                <p class="text-base md:text-2xl mb-8 md:mb-12 text-gray-100 font-medium leading-relaxed drop-shadow-lg">
+                    <span class="md:hidden">نقدم لك أفضل الخيارات التي تطابق مواصفاتك تماماً وبأفضل أسعار السوق.</span>
+                    <span class="hidden md:inline">نقدم لك أفضل الخيارات العقارية التي تطابق مواصفاتك تماماً، وبأسعار
+                        السوق الحقيقية والمنافسة.</span>
+                </p>
+
+                <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-5 pb-20 md:pb-32">
+                    <a href="#specialties"
+                        class="bg-gradient-to-l from-brand-gold to-yellow-500 text-white px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:from-yellow-500 hover:to-brand-gold transition-all shadow-[0_0_20px_rgba(217,119,6,0.6)] transform hover:-translate-y-1">
+                        تصفح التخصصات
+                    </a>
+                    <a href="#contact"
+                        class="bg-white/10 border-2 border-white/80 backdrop-blur-md text-white px-8 py-3 md:py-4 rounded-full font-bold text-base md:text-lg hover:bg-white hover:text-brand-dark transition-all transform hover:-translate-y-1">
+                        تواصل معنا
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Marquee (Overlapping Video) -->
+        <div
+            class="absolute bottom-0 left-0 w-full z-20 bg-brand-dark/40 backdrop-blur-md border-t border-white/10 shadow-[0_-10px_40px_rgba(0,0,0,0.3)]">
+            <div class="marquee-container p-2 relative z-0 !bg-transparent !mb-0 !pb-3 !pt-4 !border-none">
+                <div class="marquee-content text-white font-black text-xl md:text-2xl items-center">
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-users text-brand-gold text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>أكثر
+                            من ١٠,٠٠٠ عميل</span></div>
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-eye text-blue-300 text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>٥٠,٠٠٠+
+                            زائر شهرياً</span></div>
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-map-location-dot text-brand-gold text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>تغطية
+                            لجميع المخططات</span></div>
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-building-circle-check text-blue-300 text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>+٥٠٠
+                            عقار مباع</span></div>
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-handshake text-brand-gold text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>شراكات
+                            موثوقة</span></div>
+
+                    <!-- Duplicated for infinite loop -->
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-users text-brand-gold text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>أكثر
+                            من ١٠,٠٠٠ عميل</span></div>
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-eye text-blue-300 text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>٥٠,٠٠٠+
+                            زائر شهرياً</span></div>
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-map-location-dot text-brand-gold text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>تغطية
+                            لجميع المخططات</span></div>
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-building-circle-check text-blue-300 text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>+٥٠٠
+                            عقار مباع</span></div>
+                    <div
+                        class="flex items-center gap-4 hover:-translate-y-1 transition-transform duration-300 cursor-default drop-shadow-md">
+                        <i
+                            class="fa-solid fa-handshake text-brand-gold text-3xl md:text-4xl bg-white/10 p-2 md:p-3 rounded-full shadow-sm"></i><span>شراكات
+                            موثوقة</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Banner -->
+    <section id="services" class="py-20 bg-white relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl font-black text-brand-dark mb-4 drop-shadow-sm">ماذا نقدم لك؟</h2>
+                <div class="w-24 h-1.5 bg-brand-gold mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div
+                    class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-xl transition-shadow duration-300 border border-gray-100 fade-in-up">
+                    <div
+                        class="w-16 h-16 bg-blue-100 text-brand-primary rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-brand-dark">حسب مواصفاتك</h3>
+                    <p class="text-gray-600">نستمع لاحتياجاتك بدقة ونوفر لك العقار الذي يطابق تطلعاتك وميزانيتك.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-xl transition-shadow duration-300 border border-gray-100 fade-in-up"
+                    style="transition-delay: 100ms;">
+                    <div
+                        class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-brand-dark">بسعر السوق</h3>
+                    <p class="text-gray-600">نضمن لك الحصول على تقييم عادل وأسعار تنافسية تعكس القيمة الحقيقية للسوق.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 p-8 rounded-2xl text-center hover:shadow-xl transition-shadow duration-300 border border-gray-100 fade-in-up"
+                    style="transition-delay: 200ms;">
+                    <div
+                        class="w-16 h-16 bg-yellow-100 text-brand-gold rounded-full flex items-center justify-center text-2xl mx-auto mb-6">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-brand-dark">توفير الوقت والجهد</h3>
+                    <p class="text-gray-600">نختصر عليك عناء البحث ونقوم بجميع الإجراءات لضمان تجربة سلسة ومريحة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section id="specialties" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-16 fade-in-up">
+                <span class="text-brand-primary font-bold tracking-wider uppercase mb-2">مجالاتنا</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4 text-center">متخصصون في أقوى المخططات
+                </h2>
+                <div class="w-24 h-1 bg-brand-gold rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Item 1 -->
+                <div
+                    class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group fade-in-up">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="شقق تمليك في جدة"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <h3 class="absolute bottom-6 right-6 text-white text-2xl font-bold">شقق تمليك</h3>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-brand-primary">
+                            <i class="fa-solid fa-location-dot me-1"></i> مدينة جدة
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">تشكيلة واسعة من شقق التمليك الفاخرة والحديثة في أرقى أحياء مدينة
+                            جدة، مصممة لتناسب العائلة السعودية.</p>
+                        <a href="#contact"
+                            class="text-brand-primary font-bold hover:text-brand-gold flex items-center gap-2">
+                            استفسر الآن <i class="fa-solid fa-arrow-left text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group fade-in-up"
+                    style="transition-delay: 100ms;">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="مخطط جوهرة العروس"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <h3 class="absolute bottom-6 right-6 text-white text-2xl font-bold">مخطط جوهرة العروس</h3>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-brand-primary">
+                            <i class="fa-solid fa-location-dot me-1"></i> مدينة جدة
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">فرص استثمارية وسكنية واعدة في مخطط جوهرة العروس، أراضي ومساحات
+                            متنوعة بمستقبل مشرق.</p>
+                        <a href="#contact"
+                            class="text-brand-primary font-bold hover:text-brand-gold flex items-center gap-2">
+                            استفسر الآن <i class="fa-solid fa-arrow-left text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group fade-in-up"
+                    style="transition-delay: 200ms;">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="مخططات الخير في الرياض"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                        <h3 class="absolute bottom-6 right-6 text-white text-2xl font-bold">مخططات الخير</h3>
+                        <div
+                            class="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-brand-primary">
+                            <i class="fa-solid fa-location-dot me-1"></i> مدينة الرياض
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">نغطي أفضل العروض في مخططات الخير شمال الرياض، الوجهة الأبرز
+                            للاستثمار العقاري وبناء بيت العمر.</p>
+                        <a href="#contact"
+                            class="text-brand-primary font-bold hover:text-brand-gold flex items-center gap-2">
+                            استفسر الآن <i class="fa-solid fa-arrow-left text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Banner -->
+    <section class="py-12 bg-brand-primary text-white">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6 fade-in-up">
+                <div
+                    class="w-20 h-20 bg-white text-brand-primary rounded-full flex items-center justify-center text-4xl shadow-lg">
+                    <i class="fa-solid fa-stamp"></i>
+                </div>
+                <div class="text-center md:text-right">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-2">وسيط معتمد وموثوق</h2>
+                    <p class="text-blue-100 text-lg">نحن معتمدون رسمياً من الهيئة العامة للعقار لضمان حقوقك وتقديم خدمة
+                        احترافية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team & Contact Section -->
+    <section id="team" class="py-20 bg-white relative">
+        <div id="contact" class="absolute -top-20"></div> <!-- Anchor for offset -->
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl md:text-4xl font-bold text-brand-dark mb-4">فريق العمل والتواصل</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto text-lg">نحن هنا لخدمتك، تواصل مع وسطائنا المعتمدين مباشرة
+                    للحصول على الاستشارة مجاناً.</p>
+                <div class="w-24 h-1 bg-brand-gold mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                <!-- Broker 1 -->
+                <div
+                    class="bg-gray-50 border border-gray-100 rounded-3xl p-8 text-center shadow-md hover:shadow-xl transition-all fade-in-up">
+                    <div
+                        class="w-24 h-24 bg-brand-primary text-white rounded-full flex items-center justify-center text-4xl mx-auto mb-6 shadow-inner">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-dark mb-2">أ. عبدالعزيز الجهني</h3>
+                    <div
+                        class="bg-blue-50 text-brand-primary px-4 py-2 rounded-lg inline-block font-semibold mb-6 text-sm border border-blue-100">
+                        <i class="fa-solid fa-id-card me-2"></i>رقم ترخيص فال: 11002626152
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="tel:0562126152"
+                            class="flex items-center justify-center gap-3 bg-white border-2 border-brand-primary text-brand-primary px-6 py-3 rounded-xl font-bold text-lg hover:bg-brand-primary hover:text-white transition-colors">
+                            <i class="fa-solid fa-phone"></i>
+                            0562126152
+                        </a>
+                        <a href="https://wa.me/966562126152" target="_blank"
+                            class="flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-3 rounded-xl font-bold text-lg hover:bg-[#1ebd5c] transition-transform transform hover:-translate-y-1 shadow-lg shadow-green-200">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            تواصل عبر واتساب
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Broker 2 -->
+                <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 text-center shadow-md hover:shadow-xl transition-all fade-in-up"
+                    style="transition-delay: 100ms;">
+                    <div
+                        class="w-24 h-24 bg-brand-gold text-white rounded-full flex items-center justify-center text-4xl mx-auto mb-6 shadow-inner">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-brand-dark mb-2">أ. مريم المطيري</h3>
+                    <div
+                        class="bg-yellow-50 text-yellow-700 px-4 py-2 rounded-lg inline-block font-semibold mb-6 text-sm border border-yellow-100">
+                        <i class="fa-solid fa-id-card me-2"></i>رقم ترخيص فال: 1100262483
+                    </div>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="tel:0557276675"
+                            class="flex items-center justify-center gap-3 bg-white border-2 border-brand-gold text-brand-gold px-6 py-3 rounded-xl font-bold text-lg hover:bg-brand-gold hover:text-white transition-colors">
+                            <i class="fa-solid fa-phone"></i>
+                            0557276675
+                        </a>
+                        <a href="https://wa.me/966557276675" target="_blank"
+                            class="flex items-center justify-center gap-3 bg-[#25D366] text-white px-6 py-3 rounded-xl font-bold text-lg hover:bg-[#1ebd5c] transition-transform transform hover:-translate-y-1 shadow-lg shadow-green-200">
+                            <i class="fa-brands fa-whatsapp text-2xl"></i>
+                            تواصل عبر واتساب
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-gray-300 py-12 border-t border-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center md:text-start">
+
+                <!-- Logo & About -->
+                <div>
+                    <a href="#"
+                        class="flex flex-wrap items-center justify-center md:justify-start gap-4 mb-6 transition-all duration-500 hover:scale-105 hover:-translate-y-1">
+                        <img src="images/الهيئه العامه للعقار .png" alt="الهيئة العامة للعقار"
+                            class="h-16 md:h-20 w-auto object-contain rounded bg-white p-1 shadow-md">
+                        <!-- <img src="images/Fal_logo.jpeg" alt="فال العقارية" class="h-14 w-auto object-contain rounded bg-white p-1 shadow-sm"> -->
+                    </a>
+                    <p class="text-sm text-gray-400">نختصر لك الطريق في البحث عن العقار الذي ترغب به حسب مواصفاتك وبسعر
+                        السوق بثقة وأمان.</p>
+                </div>
+
+                <!-- Links -->
+                <div class="flex flex-col space-y-2">
+                    <h4 class="text-white font-bold mb-2">روابط سريعة</h4>
+                    <a href="#home" class="hover:text-brand-gold transition-colors">الرئيسية</a>
+                    <a href="#services" class="hover:text-brand-gold transition-colors">خدماتنا</a>
+                    <a href="#specialties" class="hover:text-brand-gold transition-colors">تخصصاتنا</a>
+                </div>
+
+                <!-- Cert & Social -->
+                <div class="flex flex-col items-center md:items-end">
+                    <div class="flex items-center gap-2 bg-gray-800 p-3 rounded-lg border border-gray-700 mb-4">
+                        <i class="fa-solid fa-shield-check text-brand-gold"></i>
+                        <span class="text-sm font-semibold text-white">وسيط معتمد - الهيئة العامة للعقار</span>
+                    </div>
+                    <!-- Social placeholders -->
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-colors"><i
+                                class="fa-brands fa-twitter"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-colors"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-gold hover:text-white transition-colors"><i
+                                class="fa-brands fa-snapchat"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 mt-10 pt-6 text-center text-sm text-gray-500">
+                &copy; <span id="year"></span> وسيطك العقاري. جميع الحقوق محفوظة.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent', 'py-4');
+                navbar.classList.add('bg-brand-dark', 'shadow-lg', 'py-2');
+            } else {
+                navbar.classList.add('bg-transparent', 'py-4');
+                navbar.classList.remove('bg-brand-dark', 'shadow-lg', 'py-2');
+            }
+        });
+
+        // Mobile menu toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const closeBtn = document.getElementById('close-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('mobile-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openMenu() {
+            menu.classList.remove('translate-x-full');
+            overlay.classList.remove('hidden');
+            setTimeout(() => overlay.classList.remove('opacity-0'), 10);
+        }
+
+        function closeMenu() {
+            menu.classList.add('translate-x-full');
+            overlay.classList.add('opacity-0');
+            setTimeout(() => overlay.classList.add('hidden'), 300);
+        }
+
+        btn.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Close mobile menu on link click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Scroll Animation (Fade in up)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Run once
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach((elem) => {
+            observer.observe(elem);
+        });
+    </script>
+
+    <!-- Floating WhatsApp Icon -->
+    <a href="https://wa.me/966562126152" target="_blank" class="float-whatsapp" title="تواصل معنا عبر واتساب الآن">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</body>
+
+</html>
